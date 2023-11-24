@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="calculatorCtrl">
+ <input type="text" ng-model="firstNumber" placeholder="Enter first number"><br>
+ <input type="text" ng-model="secondNumber" placeholder="Enter second number"><br>
+ <button ng-click="addNumbers()">Add</button>
+ <button ng-click="subtractNumbers()">Subtract</button>
+ <button ng-click="multiplyNumbers()">Multiply</button>
+ <button ng-click="divideNumbers()">Divide</button>
+ <h2>Result: {{result}}</h2>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('calculatorCtrl', function($scope) {
+    $scope.result = 0;
+    $scope.addNumbers = function() {
+        $scope.result = parseInt($scope.firstNumber) + parseInt($scope.secondNumber);
+    };
+    $scope.subtractNumbers = function() {
+        $scope.result = parseInt($scope.firstNumber) - parseInt($scope.secondNumber);
+    };
+    $scope.multiplyNumbers = function() {
+        $scope.result = parseInt($scope.firstNumber) * parseInt($scope.secondNumber);
+    };
+    $scope.divideNumbers = function() {
+        if ($scope.secondNumber === 0) {
+            alert('Error! Dividing by zero is not allowed.');
+        } else {
+            $scope.result = parseInt($scope.firstNumber) / parseInt($scope.secondNumber);
+        }
+    };
+});
+</script>
+
+</body>
+</html>
